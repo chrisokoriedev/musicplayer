@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_audio_query/flutter_audio_query.dart';
+import 'package:musicplayer/view/bottomsheet.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({Key? key}) : super(key: key);
@@ -97,62 +98,9 @@ class _HomepageState extends State<Homepage> {
           },
           separatorBuilder: (context, index) => Divider(),
           itemCount: songs.length),
-      bottomSheet: GestureDetector(
-        onTap: () {
-          setState(() {
-            height = 900;
-          });
-        },
-        child: AnimatedContainer(
-          width: double.infinity,
-          height: height,
-          color: Colors.red,
-          duration: const Duration(milliseconds: 500),
-          child: Column(
-            children: [
-              SizedBox(
-                height: 30,
-              ),
-              height == 50
-                  ? Container()
-                  : WillPopScope(
-                      onWillPop: () async {
-                        setState(() {
-                          height = 50;
-                        });
-                        return false;
-                      },
-                      child: GestureDetector(
-                        onVerticalDragUpdate: (details) {
-                          int sen = 8;
-                          if (details.delta.dy > sen) {
-                            setState(() {
-                              height = 50;
-                            });
-                          }
-                        },
-                        child: Container(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Icon(Icons.abc),
-                              IconButton(
-                                icon: Icon(Icons.arrow_drop_down),
-                                onPressed: () {
-                                  setState(() {
-                                    height = 50;
-                                  });
-                                },
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    )
-            ],
-          ),
-        ),
-      ),
+      bottomSheet: BottomSheetPage(height: height,),
     );
   }
+
+ 
 }
