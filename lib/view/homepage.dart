@@ -1,5 +1,4 @@
-import 'dart:io';
-
+// ignore_for_file: import_of_legacy_library_into_null_safe
 import 'package:flutter/material.dart';
 import 'package:flutter_audio_query/flutter_audio_query.dart';
 import 'package:musicplayer/view/bottomsheet.dart';

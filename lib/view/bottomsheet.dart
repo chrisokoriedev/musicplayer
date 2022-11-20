@@ -2,19 +2,26 @@ import 'package:flutter/material.dart';
 
 class BottomSheetPage extends StatefulWidget {
   final double height;
-  const BottomSheetPage({Key? key, required this.height}) : super(key: key);
+   final GlobalKey<MainMusicSectionState> key;
 
   @override
   State<BottomSheetPage> createState() => _BottomSheetPageState();
 }
 
 class _BottomSheetPageState extends State<BottomSheetPage> {
+  double? height;
+  @override
+  void initState() {
+    super.initState();
+    height = widget.height;
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         setState(() {
-          widget.height = 900;
+          height = 900;
         });
       },
       child: AnimatedContainer(
@@ -25,14 +32,14 @@ class _BottomSheetPageState extends State<BottomSheetPage> {
         child: Column(
           children: [
             SizedBox(
-              widget.height: 30,
+              height: 30,
             ),
             widget.height == 50
                 ? Container()
                 : WillPopScope(
                     onWillPop: () async {
                       setState(() {
-                        widget.height = 50;
+                        height = 50;
                       });
                       return false;
                     },
@@ -41,7 +48,7 @@ class _BottomSheetPageState extends State<BottomSheetPage> {
                         int sen = 8;
                         if (details.delta.dy > sen) {
                           setState(() {
-                            widget.height = 50;
+                            height = 50;
                           });
                         }
                       },
@@ -54,7 +61,7 @@ class _BottomSheetPageState extends State<BottomSheetPage> {
                               icon: Icon(Icons.arrow_drop_down),
                               onPressed: () {
                                 setState(() {
-                                  widget.height = 50;
+                                  height = 50;
                                 });
                               },
                             ),

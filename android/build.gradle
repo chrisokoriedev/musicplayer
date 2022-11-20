@@ -8,6 +8,12 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:7.1.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        def exoplayer_version = "...specify-version-here...."
+        implementation "com.google.android.exoplayer:exoplayer-core:$exoplayer_version"
+        implementation "com.google.android.exoplayer:exoplayer-dash:$exoplayer_version"
+        implementation "com.google.android.exoplayer:exoplayer-hls:$exoplayer_version"
+        implementation "com.google.android.exoplayer:exoplayer-smoothstreaming:$exoplayer_version"
+    
     }
 }
 
