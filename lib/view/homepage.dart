@@ -14,8 +14,7 @@ class _HomepageState extends State<Homepage> {
   int currentIndex = 0;
   final FlutterAudioQuery audioQuery = FlutterAudioQuery();
   List<SongInfo> songs = [];
-  // final GlobalKey<MainMusicSectionState> key =
-  //     GlobalKey<MainMusicSectionState>();
+  late final GlobalKey<BottomSheetPageState> bottomSheetKey;
 
   final ScrollController scrollController = ScrollController();
   double height = 50;
@@ -49,7 +48,7 @@ class _HomepageState extends State<Homepage> {
         currentIndex--;
       }
     }
-    // key.currentState.setSong(songs[currentIndex]);
+    bottomSheetKey.currentState!.setSong((songs[currentIndex]));
   }
 
   @override
@@ -97,9 +96,12 @@ class _HomepageState extends State<Homepage> {
           },
           separatorBuilder: (context, index) => Divider(),
           itemCount: songs.length),
-      bottomSheet: BottomSheetPage(height: height,),
+      bottomSheet: BottomSheetPage(
+        height: height,
+        songInfo: songs[currentIndex],
+        changeTrack: changeTrack,
+        bottomSheetKey: bottomSheetKey,
+      ),
     );
   }
-
- 
 }
