@@ -14,7 +14,7 @@ class _HomepageState extends State<Homepage> {
   int currentIndex = 0;
   final FlutterAudioQuery audioQuery = FlutterAudioQuery();
   List<SongInfo> songs = [];
-  late final GlobalKey<BottomSheetPageState> bottomSheetKey;
+  final GlobalKey<BottomSheetPageState> bottomSheetKey = GlobalKey();
 
   final ScrollController scrollController = ScrollController();
   double height = 50;
